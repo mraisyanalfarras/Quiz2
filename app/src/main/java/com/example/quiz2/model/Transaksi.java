@@ -20,13 +20,29 @@ public class Transaksi implements Serializable {
         this.isIncome = isIncome;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setIncome(boolean income) {
+        isIncome = income;
+    }
+
     // Getters and Setters
     public int getId() {
-        return id;
+        return id; // ID sebagai int
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id = id; // Pastikan ID diset dengan benar
     }
 
     public String getDate() {

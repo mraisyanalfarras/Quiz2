@@ -31,6 +31,6 @@ public class TransaksiRepository {
 
     // Metode untuk menghapus transaksi
     public void deleteTransaction(Transaksi transaksi) {
-        new Thread(() -> transaksiDao.delete(transaksi)).start(); // Delete transaction in a separate thread
+        new Thread(() -> transaksiDao.delete(transaksi)).start();
     }
 }

@@ -20,6 +20,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private static final int ADD_TRANSACTION_REQUEST = 1;
+    private static final int REQUEST_UPDATE_TRANSACTION = 1;
     private ListView listViewTransaksi;
     private TransaksiAdapter adapter;
     private TransaksiRepository transaksiRepository;
@@ -40,6 +41,13 @@ public class MainActivity extends AppCompatActivity {
         fabAddTransaction.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, TambahActivity.class);
             startActivityForResult(intent, ADD_TRANSACTION_REQUEST);
+        });
+
+        listViewTransaksi.setOnItemClickListener((parent, view, position, id) -> {
+            Transaksi selectedTransaksi = (Transaksi) parent.getItemAtPosition(position);
+            Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+            intent.putExtra("TRANSAKSI", selectedTransaksi);
+            startActivityForResult(intent, REQUEST_UPDATE_TRANSACTION);
         });
     }
 
@@ -75,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ADD_TRANSACTION_REQUEST && resultCode == RESULT_OK) {
             loadTransactions(); // Refresh the transaction list
+        } else if (requestCode == REQUEST_UPDATE_TRANSACTION && resultCode == RESULT_OK) {
+            loadTransactions(); // Refresh after update
         }
     }
 }

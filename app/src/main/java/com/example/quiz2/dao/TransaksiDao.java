@@ -23,7 +23,8 @@ public interface TransaksiDao {
 
     // Delete a transaction
     @Delete
-    void delete(Transaksi transaksi);
+    void delete(Transaksi transaksi); // Hapus berdasarkan objek transaksi
+
 
     // Get all transactions
     @Query("SELECT * FROM Transaksi")  // Make sure the table name matches
@@ -36,4 +37,5 @@ public interface TransaksiDao {
     // Get transactions based on income or expense
     @Query("SELECT * FROM Transaksi WHERE isIncome = :isIncome")
     List<Transaksi> getTransactionsByType(boolean isIncome);
+
 }
