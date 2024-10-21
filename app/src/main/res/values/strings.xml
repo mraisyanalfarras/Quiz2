@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">quiz2</string>
+    <string name="saldo">Rp. 0</string>
+    <string name="update">Update</string>
 </resources>

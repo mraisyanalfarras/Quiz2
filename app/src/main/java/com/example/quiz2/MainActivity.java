@@ -3,8 +3,8 @@ package com.example.quiz2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,9 @@ import com.example.quiz2.helper.TransaksiRepository;
 import com.example.quiz2.model.Transaksi;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,13 +23,15 @@ public class MainActivity extends AppCompatActivity {
     private ListView listViewTransaksi;
     private TransaksiAdapter adapter;
     private TransaksiRepository transaksiRepository;
+    private TextView tvSaldo; // Tambahkan TextView untuk saldo
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // Make sure to use the correct layout file name
+        setContentView(R.layout.activity_main);
 
         listViewTransaksi = findViewById(R.id.lvTransactions);
+        tvSaldo = findViewById(R.id.tvSaldo); // Inisialisasi TextView saldo
         transaksiRepository = new TransaksiRepository(this);
 
         loadTransactions();
@@ -45,8 +49,25 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(() -> {
                 adapter = new TransaksiAdapter(MainActivity.this, transactions);
                 listViewTransaksi.setAdapter(adapter);
+                calculateSaldo(transactions); // Hitung saldo setiap kali transaksi dimuat
             });
         }).start();
+    }
+
+    private void calculateSaldo(List<Transaksi> transactions) {
+        int totalSaldo = 0; // Inisialisasi saldo
+
+        // Menghitung total pemasukan dan pengeluaran
+        for (Transaksi transaksi : transactions) {
+            if (transaksi.isIncome()) {
+                totalSaldo += transaksi.getAmount(); // Tambah jika pemasukan
+            } else {
+                totalSaldo -= transaksi.getAmount(); // Kurang jika pengeluaran
+            }
+        }
+
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+        tvSaldo.setText(numberFormat.format(totalSaldo)); // Format dan update TextView saldo
     }
 
     @Override
