@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".TambahActivity">
+
+    <!-- Label Jumlah -->
+    <TextView
+        android:id="@+id/tx_jumlah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jumlah"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Input Jumlah -->
+    <EditText
+        android:id="@+id/et_jumlah"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Jumlah"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tx_jumlah"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Label Keterangan -->
+    <TextView
+        android:id="@+id/tx_keterangan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Keterangan"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_jumlah"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Input Keterangan -->
+    <EditText
+        android:id="@+id/et_keterangan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Keterangan"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tx_keterangan"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Label Kategori -->
+    <TextView
+        android:id="@+id/tx_kategori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kategori"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_keterangan"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Spinner Kategori -->
+    <Spinner
+        android:id="@+id/sp_kategori"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tx_kategori"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Label Tanggal -->
+    <TextView
+        android:id="@+id/tx_tanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tanggal"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sp_kategori"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- DatePicker for Tanggal -->
+    <Button
+        android:id="@+id/btnDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pilih Tanggal"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#1E88E5"
+        android:padding="12dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tx_tanggal"
+        android:layout_marginBottom="15dp" />
+
+    <!-- Button Simpan -->
+    <Button
+        android:id="@+id/btn_simpan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnDate"
+        android:layout_marginTop="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
